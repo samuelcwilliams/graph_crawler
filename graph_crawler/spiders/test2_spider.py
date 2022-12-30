@@ -10,7 +10,11 @@ class QouteSpider(CrawlSpider):
         Rule(LinkExtractor(allow="/author"), callback="parse_item"),
     )
 
+    """
+    TODO: Implement function to parse responses from the QouteSpider
+    """
     def parse_item(self, response):
         yield {
             "author": response.css(".author-title h3::text").get(),
+            "qoute": response.css(".author-qoute h4::text").get(),
         }
